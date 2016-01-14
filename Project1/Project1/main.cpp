@@ -48,9 +48,11 @@ void test()
 {
 	std::string source;
 	std::cout << "Enter a message" << std::endl;
-	std::cin >> source;
+	std::getline(std::cin, source);//flush new line char
+	std::getline(std::cin, source);
+	//std::cin >> source;
 
-	int key;//move by 15
+	int key;
 	std::cout << "Enter an integer" << std::endl;
 	std::cin >> key;
 
@@ -97,7 +99,9 @@ void bruteForce()
 {
 	std::string source;
 	std::cout << "Enter an encrypted message" << std::endl;
-	std::cin >> source;
+	std::getline(std::cin, source);//flush new line char
+	std::getline(std::cin, source);
+	//std::cin >> source;
 
 	std::cout << "Attempting to decrypt: " << source << std::endl;
 	std::string de;
@@ -106,9 +110,15 @@ void bruteForce()
 		de = decrypt(source, i);
 		std::cout << de << "  Key: " << i;
 		if (i % 2 != 0)
-			std::cout << "\t\t";
+		{
+			if (i > 0 && i < 10 )
+				std::cout << "\t\t";
+			else
+				std::cout << "\t";
+		}
+			
 		if (i % 2 == 0)//keep two columns
-			std::cout << std::endl;
+			std::cout << "\n\n";
 	}
 }
 void printMenu()
